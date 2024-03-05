@@ -1,23 +1,193 @@
-body{
-    background-color: #151b29;
-    color: #f1faee;
-    margin: 0px;
-    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+@import url("https://fonts.googleapis.com/css2?family=Figtree:wght@300..900&display=swap");
 
+:root {
+  --def-transition-duration: 0.2s;
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-h1{
-    margin: auto 10px;
-    text-align: center;
-    padding: 0.5em;
-    transition: box-shadow 0.5s ease, text-shadow 0.3s ease;
-    
-
+html {
+  font-family: "Figtree", sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
 }
 
-h1:hover {
-    box-shadow: 0 0.5em 0.5em -0.4em greenyellow;
-    text-shadow: 0 0 0.2em greenyellow;
-    margin: 0;
+#hero {
+  height: 100vh;
+  background: #f16200;
+  background: -moz-linear-gradient(45deg, #f16200 0%, #d0059f 1%, #061ae1 100%);
+  background: -webkit-linear-gradient(
+    45deg,
+    #f16200 0%,
+    #d0059f 1%,
+    #061ae1 100%
+  );
+  background: linear-gradient(45deg, #f16200 0%, #d0059f 1%, #061ae1 100%);
+  padding-top: 1rem;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
 
+#hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgb(15, 21, 37, 0.8);
+  z-index: -1;
+}
+
+#main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  width: 90%;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 3rem;
+}
+
+nav ul a {
+  text-decoration: none;
+  color: #a1a2a3;
+  display: inline-block;
+  padding: 1.5rem 0;
+}
+
+nav ul a:hover {
+  color: #e8e8e8;
+}
+
+.submenu {
+  position: relative;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.submenu::after {
+  content: url("icon-arrow-down.svg");
+  opacity: 0.6;
+  height: 25px;
+}
+
+.submenu:hover ul {
+  display: block;
+}
+
+.submenu ul {
+  position: absolute;
+  top: 100%;
+  left: -2rem;
+  background-color: rgb(15, 21, 37, 0.4);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  display: none;
+}
+
+.submenu ul a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  min-width: 15rem;
+}
+
+.submenu ul a::after {
+  content: url("icon-arrow-right.svg");
+  height: 17px;
+  opacity: 0;
+}
+
+.submenu ul a:hover {
+  background-color: #2c2d2f;
+  padding: 1rem 1.5rem;
+}
+
+.submenu ul a:hover::after {
+  opacity: 1;
+}
+
+.submenu:hover::after {
+  opacity: 1;
+}
+
+.submenu:hover > a {
+  color: #e8e8e8;
+}
+
+button {
+  border: 1px solid #9e70eb;
+  appearance: none;
+  color: #9e70eb;
+  background: transparent;
+  border-radius: 10rem;
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+}
+
+nav ul a {
+  transition-property: color;
+}
+
+.submenu::after {
+  transition-property: opacity;
+}
+
+.submenu ul {
+  display: block;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-1rem);
+  transition-property: opacity, transform, visibility;
+}
+.submenu:hover ul {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+}
+
+.submenu ul a {
+  transition-property: background-color, color;
+}
+
+.submenu ul a::after {
+  transition-property: opacity;
+}
+
+nav ul a,
+.submenu::after,
+.submenu ul,
+.submenu ul a,
+.submenu ul a::after {
+  transition-duration: var(--def-transition-duration);
+  transition-timing-function: ease-in-out;
+}
+
+footer li a {
+  text-decoration: none;
+  color: #a1a2a3;
+}
+
+.media li {
+  list-style: none;
+}
+.media {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
 }
