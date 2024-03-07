@@ -30,6 +30,7 @@ html {
   background: linear-gradient(45deg, #f16200 0%, #d0059f 1%, #061ae1 100%);
   padding-top: 1rem;
   position: relative;
+
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -57,6 +58,9 @@ nav ul {
   padding: 0;
   display: flex;
   gap: 3rem;
+}
+nav {
+  z-index: 3;
 }
 
 nav ul a {
@@ -192,6 +196,7 @@ footer li a {
   align-items: center;
   gap: 1rem;
   margin-bottom: 1rem;
+  z-index: 3;
 }
 
 .svg-loader-container {
@@ -200,7 +205,7 @@ footer li a {
   display: grid;
   place-content: center;
   inset: 0;
-  z-index: 999;
+  z-index: 2;
   transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
 }
 
