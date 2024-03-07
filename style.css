@@ -2,6 +2,8 @@
 
 :root {
   --def-transition-duration: 0.2s;
+  --load-body-color: #d0059f;
+  --load-stroke-color: rgb(15, 21, 37, 0.8);
 }
 * {
   padding: 0;
@@ -190,4 +192,52 @@ footer li a {
   align-items: center;
   gap: 1rem;
   margin-bottom: 1rem;
+}
+
+.svg-loader-container {
+  position: fixed;
+  background-color: transparent;
+  display: grid;
+  place-content: center;
+  inset: 0;
+  z-index: 999;
+  transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+}
+
+svg {
+  width: 30rem;
+  font-weight: 700;
+}
+svg text {
+  font-size: 5rem;
+  stroke: 2;
+  letter-spacing: -6px;
+}
+
+svg text.text-body {
+  stroke: var(--load-stroke-color);
+  animation: 4s infinite alternate animate-strokes;
+}
+
+@keyframes animate-strokes {
+  0% {
+    fill: transparent;
+    stroke: var(--load-stroke-color);
+    stroke-width: 3;
+    stroke-dashoffset: 25%;
+    stroke-dasharray: 0 32%;
+  }
+  50% {
+    fill: transparent;
+    stroke: var(--load-stroke-color);
+    stroke-width: 3;
+  }
+  80%,
+  100% {
+    fill: var(--load-stroke-color);
+    stroke: transparent;
+    stroke-width: 0;
+    stroke-dashoffset: -25%;
+    stroke-dasharray: 32% 0;
+  }
 }
